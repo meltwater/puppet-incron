@@ -1,5 +1,5 @@
 name    'meltwater-incron'
-version '0.2.0'
+version '0.2.1'
 source 'http://inotify.aiken.cz'
 license 'Apache License, Version 2.0'
 summary 'Puppet Module for Incron'
