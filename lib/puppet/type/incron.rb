@@ -12,13 +12,47 @@ Puppet::Type.newtype(:incron) do
     desc "The path to monitor"
   end
 
-  newproperty(:mask) do
+  newproperty(:mask, :array_matching => :all) do
+    # Borrows heavily from the cron type, overriding insync. Likely requires some cleanup
     desc "The events to trigger on"
+
+    # We have to override the parent method, because we consume the entire
+    # "should" array
+    def insync?(is)
+      self.is_to_s(is) == self.should_to_s
+    end
+
+    def is_to_s(currentvalue = @is)
+      if currentvalue
+        return currentvalue unless currentvalue.is_a?(Array)
+
+        if self.name == :command or currentvalue[0].is_a? Symbol
+          currentvalue[0]
+        else
+          currentvalue.join(",")
+        end
+      else
+        nil
+      end
+    end
+
+    def should_to_s(newvalue = @should)
+      if newvalue
+        newvalue = [newvalue] unless newvalue.is_a?(Array)
+        if self.name == :command or newvalue[0].is_a? Symbol
+          newvalue[0]
+        else
+          newvalue.join(",")
+        end
+      else
+        nil
+      end
+    end
 
     def should
       if @should
         if @should.is_a? Array
-          @should[0]
+          @should.join(',')
         else
           devfail "mask is not an array"
         end
