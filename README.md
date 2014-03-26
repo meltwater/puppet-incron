@@ -7,6 +7,9 @@ Package installation is possible by including the incron class, but not mandator
 
 As opposed to the cron resource type, incron resource names must be unique system wide.
 
+Due to incrons inability to handle comments, it will log the following error when changes are made to an incrontab file. This error is harmless however:
+access denied on # - events will be discarded silently
+
 Usage Example
 -------------
 
