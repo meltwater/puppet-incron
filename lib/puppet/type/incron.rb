@@ -81,7 +81,8 @@ Puppet::Type.newtype(:incron) do
       'IN_MOVE',
       'IN_ISDIR',
       'IN_ONESHOT',
-      'IN_ALL_EVENTS']
+      'IN_ALL_EVENTS',
+      'IN_NO_LOOP']
 
       value.split(',').each do |val|
         raise ArgumentError, "Invalid mask #{val.inspect}" unless masks.include?(val)
