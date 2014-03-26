@@ -1,18 +1,16 @@
 incron
 ======
 
-This is the incron module which allows you to define incron jobs just like you would cronjobs
-using a resource type.
+This incron module allows you to define incron jobs just like you would cronjobs using a resource type.
 
-Package installation is possible by including the incron class, but not mandatory. This is to
-accomodate all the various ways organisations manage installing packages.
+Package installation is possible by including the incron class, but not mandatory. This is to accomodate the various ways organisations manage installing packages.
 
-As opposed to the cron resource type, incron resource names much be unique system wide.
+As opposed to the cron resource type, incron resource names must be unique system wide.
 
 Usage Example
 -------------
 
-    include incron # Not needed if the package installed through other means.
+    include incron # Not needed if the package was installed through other means.
 
     incron {'test1':
       user    => 'www-data',
