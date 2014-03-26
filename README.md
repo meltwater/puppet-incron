@@ -42,6 +42,7 @@ Valid values for the mask parameter are:
     IN_ISDIR
     IN_ONESHOT
     IN_ALL_EVENT
+    IN_NO_LOOP
 
 Support
 -------
