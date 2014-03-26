@@ -1,11 +1,7 @@
 name    'meltwater-incron'
-version '0.1.0'
-source 'UNKNOWN'
-author 'meltwater'
+version '0.2.0'
+source 'http://inotify.aiken.cz'
 license 'Apache License, Version 2.0'
-summary 'UNKNOWN'
-description 'UNKNOWN'
-project_page 'UNKNOWN'
-
-## Add dependencies, if any:
-# dependency 'username/name', '>= 1.2.0'
+summary 'Puppet Module for Incron'
+description 'Puppet Module for Incron'
+project_page 'https://github.com/meltwater/puppet-incron'
