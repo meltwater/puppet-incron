@@ -10,16 +10,23 @@ As opposed to the cron resource type, incron resource names must be unique syste
 Due to incrons inability to handle comments, it will log the following error when changes are made to an incrontab file. This error is harmless however:
 access denied on # - events will be discarded silently
 
+incron_allowuser and incron_denyuser allow for incron.allow/deny file management.
+
 Usage Example
 -------------
 
     include incron # Not needed if the package was installed through other means.
 
     incron {'test1':
-      user    => 'www-data',
+      user    => 'wleese',
       command => 'touch /tmp/1',
       path    => '/home/wleese/',
       mask    => ['IN_CREATE'],
+    }
+
+    # Optional, only if you need to manage allowed users
+    incron_allowuser { 'wleese':
+      ensure => present,
     }
 
 Valid values for the mask parameter are:
@@ -47,5 +54,7 @@ Valid values for the mask parameter are:
 
 Support
 -------
+
+If you recieve the error "Error: Could not find a suitable provider for incron", please install the incron package or add 'include incron' to your puppet code.
 
 Feel free to suggest improvements!
