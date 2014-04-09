@@ -7,15 +7,19 @@ incrondeny = case Facter.value(:osfamily)
     "/etc/incron.deny"
   end
 
-unless File.exists?(incrondeny)
-  File.open(incrondeny, 'w') do |file| 
-    file.write ""
-  end
-end
-
 Puppet::Type.type(:incron_denyuser).provide(:parsed, :parent => Puppet::Provider::ParsedFile, :default_target => incrondeny, :filetype => :flat) do
 
   desc "The incron_allowuser provider that uses the ParsedFile class"
+
+  def flush
+    unless File.exists?(@resource[:target])
+      File.open(@resource[:target], 'w') do |file| 
+        file.write ""
+      end 
+    end 
+
+    super
+  end
   
   text_line :comment, :match => /^#/;
   text_line :blank, :match => /^\s*$/;

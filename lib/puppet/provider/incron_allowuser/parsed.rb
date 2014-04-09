@@ -7,15 +7,19 @@ incronallow = case Facter.value(:osfamily)
     "/etc/incron.allow"
   end
 
-unless File.exists?(incronallow)
-  File.open(incronallow, 'w') do |file| 
-    file.write "root"
-  end
-end
-
 Puppet::Type.type(:incron_allowuser).provide(:parsed, :parent => Puppet::Provider::ParsedFile, :default_target => incronallow, :filetype => :flat) do
 
   desc "The incron_allowuser provider that uses the ParsedFile class"
+
+  def flush
+    unless File.exists?(@resource[:target])
+      File.open(@resource[:target], 'w') do |file| 
+        file.write "root"
+      end
+    end
+
+    super
+  end
   
   text_line :comment, :match => /^#/;
   text_line :blank, :match => /^\s*$/;
