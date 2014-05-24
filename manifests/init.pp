@@ -10,4 +10,9 @@ class incron {
 
   package {'incron': ensure => installed }
 
+  service {'incrond': 
+    ensure  => running,
+    require => Package['incron']     
+  }
+
 }
