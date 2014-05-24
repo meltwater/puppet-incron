@@ -6,13 +6,18 @@
 #
 # William Leese <william.leese@meltwater.com>
 #
-class incron {
+class incron (
+  ensure = 'running',
+  manage_service = true,
+) {
 
   package {'incron': ensure => installed }
 
-  service {'incrond': 
-    ensure  => running,
-    require => Package['incron']     
+  if manage_service {
+    service {'incrond': 
+      ensure  => $ensure,
+      require => Package['incron']     
+    }
   }
 
 }
