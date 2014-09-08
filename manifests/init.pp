@@ -7,8 +7,8 @@
 # William Leese <william.leese@meltwater.com>
 #
 class incron (
-  ensure = 'running',
-  manage_service = true,
+  $ensure = 'running',
+  $manage_service = true,
 ) {
 
   package {'incron': ensure => installed }
