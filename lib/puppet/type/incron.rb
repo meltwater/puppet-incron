@@ -71,6 +71,7 @@ Puppet::Type.newtype(:incron) do
       'IN_OPEN',
       'IN_MOVED_FROM',
       'IN_MOVED_TO',
+      'IN_MOVE_SELF',
       'IN_CREATE',
       'IN_DELETE',
       'IN_DELETE_SELF',
@@ -80,7 +81,9 @@ Puppet::Type.newtype(:incron) do
       'IN_CLOSE',
       'IN_MOVE',
       'IN_ISDIR',
+      'IN_DONT_FOLLOW',
       'IN_ONESHOT',
+      'IN_ONLYDIR',
       'IN_ALL_EVENTS',
       'IN_NO_LOOP']
 
