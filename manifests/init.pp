@@ -14,8 +14,15 @@ class incron (
   package {'incron': ensure => installed }
 
   if manage_service {
+    if $ensure == 'running' {
+      $enable = true
+    } else {
+      $enable = false
+    }
+
     service {'incrond': 
       ensure  => $ensure,
+      enable  => $enable,
       require => Package['incron']     
     }
   }
