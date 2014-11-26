@@ -9,14 +9,14 @@
 class incron (
   $ensure = 'running',
   $manage_service = true,
-) {
+) inherits incron::params {
 
   package {'incron': ensure => installed }
 
   if manage_service {
-    service {'incrond': 
+    service { $incron::params::service_name:
       ensure  => $ensure,
-      require => Package['incron']     
+      require => Package['incron']
     }
   }
 
