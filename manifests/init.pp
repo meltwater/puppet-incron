@@ -1,6 +1,7 @@
 # == Class: incron
 #
-# Installs the incron package. Class it not required for use of the incron defined type
+# Installs the incron package.
+# Class is not required for use of the incron defined type
 #
 # === Authors
 #
@@ -11,12 +12,22 @@ class incron (
   $manage_service = true,
 ) inherits incron::params {
 
+  case $::osfamily {
+    'Redhat': {
+      package {'epel-release':
+        ensure => installed,
+        notify => Package['incron'],
+      }
+    }
+  }
+
   package {'incron': ensure => installed }
 
   if manage_service {
     service { $incron::params::service_name:
       ensure  => $ensure,
-      require => Package['incron']
+      enable  => true,
+      require => Package['incron'],
     }
   }
 

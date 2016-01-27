@@ -1,0 +1,15 @@
+HOSTS:
+  centos-7-x86_64:
+    roles:
+      - master
+    platform: el-7-x86_64
+    hypervisor: vmpooler
+    snapshot: snapshot-1
+    template: tpl-centos-7-x86_64
+#    ip: 10.10.67.141
+CONFIG:
+    type: foss
+    keyfile: ~/beakerkey
+    log_level: debug
+    pooling_api: http://10.10.67.25:4567
+    preserve_hosts: always
