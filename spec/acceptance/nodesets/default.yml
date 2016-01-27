@@ -1,11 +1,15 @@
 HOSTS:
-  centos-66-x64:
+  centos-7-x86_64:
     roles:
       - master
-    platform: el-6-x86_64
-    box: puppetlabs/centos-6.6-64-nocm
-    box_url: https://vagrantcloud.com/puppetlabs/boxes/centos-6.6-64-nocm
-    hypervisor: vagrant
+    platform: el-7-x86_64
+    hypervisor: vmpooler
+    snapshot: snapshot-1
+    template: tpl-centos-7-x86_64
+#    ip: 10.10.67.141
 CONFIG:
-  log_level: verbose
-  type: foss
+    type: foss
+    keyfile: ~/beakerkey
+    log_level: debug
+    pooling_api: http://10.10.67.25:4567
+    preserve_hosts: always

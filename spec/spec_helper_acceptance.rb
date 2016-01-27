@@ -14,7 +14,7 @@ RSpec.configure do |c|
   # Configure all nodes in nodeset
   c.before :suite do
     # Install module and dependencies
-    puppet_module_install(:source => proj_root, :module_name => 'profile_vmpooler')
+    puppet_module_install(:source => proj_root, :module_name => 'incron')
     hosts.each do |host|
       #shell('git clone http://10.10.67.30:7990/scm/pup/joshbeard-bamboo.git /etc/puppet/modules/bamboo')
       on host, puppet('module', 'install', 'puppetlabs-stdlib'), { :acceptable_exit_codes => [0,1] }
