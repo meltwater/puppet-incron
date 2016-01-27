@@ -1,6 +1,7 @@
 # == Class: incron
 #
-# Installs the incron package. Class it not required for use of the incron defined type
+# Installs the incron package.
+# Class it not required for use of the incron defined type
 #
 # === Authors
 #

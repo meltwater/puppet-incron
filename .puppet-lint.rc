@@ -36,7 +36,7 @@
 #--no-case_without_default-check
 
 # classes
-#--no-class_inherits_from_params_class-check
+--no-class_inherits_from_params_class-check
 #--no-autoloader_layout-check
 #--no-right_to_left_relationship-check
 #--no-nested_classes_or_defines-check
