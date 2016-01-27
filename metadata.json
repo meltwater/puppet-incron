@@ -1,0 +1,35 @@
+{
+  "author": "meltwater-incron",
+  "dependencies": [],
+  "license": "Apache-2.0",
+  "name": "meltwater-incron",
+  "operatingsystem_support": [],
+  "project_page": "",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 1.0.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "5",
+        "6",
+        "7"
+      ]
+    }
+  ],
+  "source": "https://github.com/meltwater/puppet-incron",
+  "summary": "Puppet Module for Incron",
+  "tags": ["cron", "incron"],
+  "version": "0.3.2"
+}

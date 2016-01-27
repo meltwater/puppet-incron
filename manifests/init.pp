@@ -16,7 +16,8 @@ class incron (
   if manage_service {
     service { $incron::params::service_name:
       ensure  => $ensure,
-      require => Package['incron']
+      enable  => true,
+      require => Package['incron'],
     }
   }
 
