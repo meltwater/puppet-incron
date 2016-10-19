@@ -114,17 +114,11 @@ Puppet::Type.newtype(:incron) do
     is empty."
 
     defaultto {
-      if provider.is_a?(@resource.class.provider(:incrontab))
-        if val = @resource.should(:user)
-          return "/var/spool/incron/#{resource[:user]}" 
-        else
-          raise ArgumentError,
-            "You must provide a username with incrontab entries"
-        end 
-      elsif provider.class.ancestors.include?(Puppet::Provider::ParsedFile)
-        provider.class.default_target
+      if val = @resource.should(:user)
+        return "/var/spool/incron/#{resource[:user]}" 
       else
-        nil 
+        raise ArgumentError,
+          "You must provide a username with incrontab entries"
       end 
     }   
   end
