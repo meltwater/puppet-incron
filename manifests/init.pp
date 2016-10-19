@@ -8,6 +8,7 @@
 #
 class incron (
   $ensure = 'running',
+  $enable_service = 'true',
   $manage_service = true,
 ) inherits incron::params {
 
@@ -16,7 +17,8 @@ class incron (
   if manage_service {
     service { $incron::params::service_name:
       ensure  => $ensure,
-      require => Package['incron']
+      enable  => $enable_service,
+      require => Package['incron'],
     }
   }
 
